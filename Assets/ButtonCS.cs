@@ -3,6 +3,15 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Text.RegularExpressions; // for Regex
 
+
+/*
+ * v0.2 2015/09/22
+ *  - SP is not garbled
+ * 
+ * v0.1 2015/09/22
+ *  - input file is garbled randomly
+ */
+
 public class ButtonCS : MonoBehaviour {
 
 	public const string rd_file = "indata.txt";
@@ -29,7 +38,7 @@ public class ButtonCS : MonoBehaviour {
 		outstr = "";
 		for(int idx=0; idx < instr.Length; idx++) {
 			code = instr[idx];
-			if (code == 0x0a || code == 0x0d) { // CRLF
+			if (code == 0x0a || code == 0x0d || code == 0x20) { // CRLF or SP
 				outstr = outstr + code.ToString();
 				continue;
 			}
